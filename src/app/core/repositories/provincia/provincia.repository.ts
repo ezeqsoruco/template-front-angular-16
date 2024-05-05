@@ -12,7 +12,7 @@ export class ProvinciaRepository {
 
   constructor(private http: HttpClient) { }
 
-  getProvincias(): Observable<Provincia[]> {
-    return this.http.get<Provincia[]>(`${this.apiUrl}`);
+  getProvincias(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 }

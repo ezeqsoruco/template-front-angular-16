@@ -1,0 +1,18 @@
+<ng-container>
+    <table *ngIf="columnas && columnas.length > 0" class="table table-hover">
+        <thead>
+            <tr>
+                <th *ngFor="let col of columnas" scope="col">{{col}}</th>
+                <th *ngIf="acciones != '' || acciones != undefined">Acciones</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="filas.length > 0">
+            <tr *ngFor="let fila of filas">
+                <td *ngFor="let col of columnas">{{fila[col.toLowerCase()]}}</td>
+                <td [innerHTML]="acciones">
+                </td>
+            </tr>
+        </tbody>
+        <p *ngIf="filas.length == 0">No existen registros</p>
+    </table>
+</ng-container>

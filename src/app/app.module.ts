@@ -5,13 +5,17 @@ import { AppComponent } from './app.component';
 import { FieldComponent } from './shared/fields/field/field.component';
 import { SelectionFieldComponent } from './shared/fields/selection-field/selection-field.component';
 import { FormPersonaComponent } from './shared/forms/form-persona/form-persona.component';
+import { GestionPersonasComponent } from './features/gestion-personas/gestion-personas/gestion-personas.component';
+import { TableComponent } from './shared/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FieldComponent,
     SelectionFieldComponent,
-    FormPersonaComponent
+    FormPersonaComponent,
+    GestionPersonasComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
