@@ -12,4 +12,8 @@ export class PersonaService {
   getPersonas(): Observable<any> {
     return this.personaRepository.getPersonas();
   }
+
+  getPersona(id: string): Observable<any> {
+    return this.personaRepository.getPersona(id);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output  } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -8,5 +8,12 @@ import { Component, Input } from '@angular/core';
 export class TableComponent {
   @Input() public columnas: string[] = [];
   @Input() public filas: any [] = [];
-  @Input() public acciones: any | undefined;
+  @Input() public acciones: any[] = [];
+
+  @Output() accionRealizada = new EventEmitter<{ accion: string, fila: any }>();
+
+
+  ejecutarAccion(accion: string, fila: any) {
+    this.accionRealizada.emit({accion, fila});
+  }
 }

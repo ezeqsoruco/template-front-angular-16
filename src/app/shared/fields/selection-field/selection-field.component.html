@@ -1,10 +1,10 @@
 <ng-container *ngIf="opciones && opciones.length > 0">
     <div *ngIf="opciones.length > 0" class="input-group mb-3">
-        <label>
-            Options
-            <select class="form-select" id="inputGroupSelect01">
-                <option selected>Elige...</option>
-                <option *ngFor="let op of opciones" [value]="op.id">{{op.nombre}}</option>
+        <label style="width: 100%;">
+            {{label}}
+            <select class="form-select" id="inputGroupSelect01" [disabled]="deshabilitado">
+                <option [selected]="value === 0">Elige...</option>
+                <option *ngFor="let op of opciones" [value]="op.id" [selected]="op.id === value">{{op.nombre}}</option>
             </select>
         </label>
     </div>

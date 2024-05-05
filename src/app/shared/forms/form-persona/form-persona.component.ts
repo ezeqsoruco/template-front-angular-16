@@ -1,5 +1,6 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, Input, OnInit  } from '@angular/core';
 import { ProvinciaService } from 'src/app/core/services/provincia.service';
+import { Persona } from 'src/app/models/persona';
 import { Provincia } from 'src/app/models/provincia';
 
 @Component({
@@ -9,6 +10,8 @@ import { Provincia } from 'src/app/models/provincia';
 })
 export class FormPersonaComponent implements OnInit {
   public provincias: Provincia[] = [];
+  @Input() public persona?: Persona;
+  @Input() public deshabilitado: boolean = true;
 
   constructor(private provinciaService: ProvinciaService){}
 
@@ -16,7 +19,7 @@ export class FormPersonaComponent implements OnInit {
     this.provinciaService.getProvincias()
     .subscribe({
         next: (data: any) => {
-          this.provincias = data.provincias
+          this.provincias = data.return.provincias
         }, 
         error: (err: any) => {
         console.log(err);

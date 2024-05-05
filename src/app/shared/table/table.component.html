@@ -3,13 +3,16 @@
         <thead>
             <tr>
                 <th *ngFor="let col of columnas" scope="col">{{col}}</th>
-                <th *ngIf="acciones != '' || acciones != undefined">Acciones</th>
+                <th *ngIf="acciones.length > 0">Acciones</th>
             </tr>
         </thead>
         <tbody *ngIf="filas.length > 0">
             <tr *ngFor="let fila of filas">
                 <td *ngFor="let col of columnas">{{fila[col.toLowerCase()]}}</td>
-                <td [innerHTML]="acciones">
+                <td class="d-flex gap-1" *ngIf="acciones.length > 0">
+                    <button type="button" *ngFor="let accion of acciones" [class]="accion.class"
+                        [innerHTML]="accion.innerHTML" (click)="ejecutarAccion(accion.nombre, fila)">
+                    </button>
                 </td>
             </tr>
         </tbody>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 import { PersonaService } from 'src/app/core/services/persona.service';
 import { Persona } from 'src/app/models/persona';
@@ -12,16 +12,30 @@ import { Persona } from 'src/app/models/persona';
 export class GestionPersonasComponent implements OnInit  {
   public columnas = ["Id","Nombre y Apellido", "DNI", "Provincia"]
   public filas: any[] = [];
-  public acciones: SafeHtml = '';
+  public acciones: any[] = [
+    {
+      nombre:"ver",
+      class: "btn btn-success",
+      innerHTML: '<i class="bi bi-eye-fill"></i>'
+    },
+    {
+      nombre:"editar",
+      class: "btn btn-primary",
+      innerHTML: '<i class="bi bi-pencil-fill"></i>'
+    },
+    {
+      nombre:"eliminar",
+      class: "btn btn-danger",
+      innerHTML: '<i class="bi bi-trash3-fill"></i>'
+    }
+  ];
 
-  constructor(private personaService: PersonaService, private sanitizer: DomSanitizer){
-    this.acciones = this.sanitizer.bypassSecurityTrustHtml('<button type="button" class="btn btn-success"><i class="bi bi-eye-fill"></i></button> <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button> <button type="button" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>');
-  }
+  constructor(private personaService: PersonaService, private router: Router){}
 
   ngOnInit() {
     this.personaService.getPersonas().subscribe({
       next: (data) => {
-        this.filas = data.personas.map((x: Persona) => {
+        this.filas = data.return.personas.map((x: Persona) => {
           return {
             "id": x.id,
             "nombre y apellido": `${x.nombre} ${x.apellido}`,
@@ -31,5 +45,31 @@ export class GestionPersonasComponent implements OnInit  {
         });
       },
     })
+  }
+
+  redirectToDetalle(id: string) {
+    this.router.navigate(["/detalle-persona",id]);
+  }
+
+  redirectToEditar(id: string) {
+    this.router.navigate(["/editar-persona",id]);
+  }
+
+  eliminarPersona(id: string) {
+
+  }
+
+  manejarAccion(event: any) {
+    switch(event.accion){
+      case "ver": 
+        this.redirectToDetalle(event.fila.id);
+        break;
+      case "editar":
+        this.redirectToEditar(event.fila.id);
+        break;
+      case "eliminar": 
+        this.eliminarPersona(event.fila.id);
+        break;
+    }
   }
 }

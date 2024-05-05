@@ -6,5 +6,6 @@ export class Persona {
     apellido!: string;
     dni!: number;
     telefono!: string;
+    idProvincia!: number;
     provincia?: Provincia;
 }

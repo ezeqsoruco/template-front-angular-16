@@ -12,6 +12,7 @@
 
 body {
   height: 100vh;
+  background-color: #6CBD45;
 }
 
   h1,
@@ -49,4 +50,16 @@ body {
     display: flex;
     align-items: center;
   }
+
+  .seccion {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.seccion h3 {
+  text-align: center;
+}
 

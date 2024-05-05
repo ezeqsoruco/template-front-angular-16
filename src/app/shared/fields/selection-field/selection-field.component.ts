@@ -8,4 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SelectionFieldComponent {
   @Input() label = 'Default';
   @Input() opciones: any[] = [];
+  @Input() public deshabilitado = true;
+  @Input() public value? = 0;
 }

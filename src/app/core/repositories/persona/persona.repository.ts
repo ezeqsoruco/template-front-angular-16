@@ -14,4 +14,8 @@ export class PersonaRepository {
   getPersonas(): Observable<any> {
     return this.httpClient.get(this.apiUrl);
   }
+
+  getPersona(id: string): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/${id}`);
+  }
 }
