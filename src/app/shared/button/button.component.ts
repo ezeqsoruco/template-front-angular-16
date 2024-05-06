@@ -9,7 +9,7 @@ export class ButtonComponent {
   @Input() public botones: any[] = [];
   @Output() public accionRealizada = new EventEmitter<{ accion: string }>();
 
-  ejecutarAccion() {
-    this.accionRealizada.emit()
+  ejecutarAccion(accion: string) {
+    this.accionRealizada.emit({accion})
   }
 }

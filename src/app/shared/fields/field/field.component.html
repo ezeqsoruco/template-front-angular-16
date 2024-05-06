@@ -2,6 +2,7 @@
     <label style="width: 100%;">
         {{label}}
         <input [type]="type" class="form-control" [maxLength]="maxLength" [minLength]="minLength" [required]="required"
-            [value]="value" [disabled]="deshabilitado" [placeholder]="placeholder" aria-describedby="basic-addon1" />
+            (change)="onInputChange($event.target)" [value]="value" [disabled]="deshabilitado"
+            [placeholder]="placeholder" aria-describedby="basic-addon1" />
     </label>
 </div>

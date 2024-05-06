@@ -14,4 +14,8 @@ export class FieldComponent {
   @Input() public required = false;
   @Input() public deshabilitado = false;
   @Input() public value: any;
+
+  onInputChange(target: any) {
+    this.value = target.value;
+  }
 }

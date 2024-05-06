@@ -1,1 +1,2 @@
-<button *ngFor="let btn of botones" [ngClass]="'btn ' + btn.class" (click)="ejecutarAccion()">{{btn.nombre}}</button>
+<button *ngFor="let btn of botones" [ngClass]="'mx-2 btn ' + btn.class"
+    (click)="ejecutarAccion(btn.nombre)">{{btn.nombre}}</button>

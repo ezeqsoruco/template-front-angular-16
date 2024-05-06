@@ -1,1 +1,7 @@
-<p>editar-persona-id works!</p>
+<div class="seccion">
+    <h3>Detalle persona</h3>
+    <app-form-persona [deshabilitado]="false" [persona]="persona"></app-form-persona>
+    <div class="d-flex justify-content-center">
+        <app-button [botones]="botones" (accionRealizada)="manejarAccion($event)"></app-button>
+    </div>
+</div>
